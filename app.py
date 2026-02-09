@@ -736,7 +736,7 @@ def api_action():
 # ====================== RUN FLASK ========================
 # =========================================================
 def run_flask():
-    app.run(host='0.0.0.0', port=5000, debug=False, use_reloader=False)
+    app.run(host='0.0.0.0', port=10000, debug=False, use_reloader=False)
 
 async def MaiiiinE():
     global loop, key, iv, region
@@ -796,9 +796,17 @@ async def MaiiiinE():
     
 async def StarTinG():
     while True:
-        try: await asyncio.wait_for(MaiiiinE() , timeout = 7 * 60 * 60)
-        except asyncio.TimeoutError: print("Token ExpiRed ! , ResTartinG")
-        except Exception as e: print(f"ErroR TcP - {e} => ResTarTinG ...")
+        try:
+            await asyncio.wait_for(MaiiinE0(), timeout=7*60)
 
-if __name__ == '__main__':
+        except asyncio.TimeoutError:
+            print("Token Expired, Restarting")
+            await asyncio.sleep(5)
+
+        except Exception as e:
+            print(f"Error TCP - {e}")
+            await asyncio.sleep(5)
+
+
+if __name__ == "__main__":
     asyncio.run(StarTinG())
